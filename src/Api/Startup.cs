@@ -39,11 +39,6 @@ namespace Api
                     };
                 });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
-            });
-
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("ApiScope", policy =>

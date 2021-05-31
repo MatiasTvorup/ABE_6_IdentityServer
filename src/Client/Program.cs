@@ -19,13 +19,14 @@ namespace Client
                 return;
             }
 
-            var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-            {
-                Address = discovery.TokenEndpoint,
-                ClientId = "client",
-                ClientSecret = "secret",
-                Scope = "api1"
-            });
+            var tokenResponse = await client.RequestClientCredentialsTokenAsync(
+                new ClientCredentialsTokenRequest
+                {
+                    Address = discovery.TokenEndpoint,
+                    ClientId = "client",
+                    ClientSecret = "secret",
+                    Scope = "api1"
+                });
 
             if (tokenResponse.IsError)
             {
