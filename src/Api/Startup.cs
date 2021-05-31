@@ -44,9 +44,9 @@ namespace Api
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
 
-            services.AddAuthorization(OptionsBuilderConfigurationExtensions =>
+            services.AddAuthorization(options =>
             {
-                OptionsBuilderConfigurationExtensions.AddPolicy("ApiScope", policy =>
+                options.AddPolicy("ApiScope", policy =>
                 {
                     policy.RequireAuthenticatedUser();
                     policy.RequireClaim("scope", "api1");

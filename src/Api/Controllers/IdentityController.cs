@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace Api.Controllers
 {
     [Route("identity")]
-    [Authorize]
+    [Authorize("ApiScope")]
     public class IdentityController : ControllerBase
     {
         public IActionResult Get()

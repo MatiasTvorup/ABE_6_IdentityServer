@@ -25,6 +25,8 @@ namespace IdentityServer
             // uncomment, if you want to add an MVC-based UI
             services.AddControllersWithViews();
 
+            services.AddLocalApiAuthentication();
+
             var builder = services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
                 .AddInMemoryIdentityResources(Config.IdentityResources)
@@ -34,6 +36,11 @@ namespace IdentityServer
 
             // not recommended for production - you need to store your key material somewhere secure
             builder.AddDeveloperSigningCredential();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("GuestClaim", policy => policy.RequireClaim("GuestClaim"));
+            });
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
             services.AddAuthentication(options =>
